@@ -27,3 +27,18 @@
 				head.appendChild(script);
 
 			}
+                        window.onload = function () {
+			   var oT = document.getElementById('t1');
+			   oT.onkeyup = function () {
+			      jsonp({
+				 url: 'https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su',
+				 data: {
+				     Name: 'cb',
+				     wd: oT.value
+				},
+				fnSucc: function (json) {
+				   console.log(json);
+				}
+			     });
+			  };
+		       }
