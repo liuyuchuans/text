@@ -13,12 +13,7 @@
 				window[fnName] = function(json1) { //因为动态添加的script标签，每次调用都会创建一堆的script标签，页面加载的时候先清除一下	
 					json.success && json.success(json1); //判断用户有没有转入success方法，有就执行，
 					head.removeChild(script);
-					//					alert(json.s);
 				}
-				//					console.log(window);
-				//	var oScript = document.createElement("script");
-				//	oScript.src = url + fnName;;
-				//	document.getElementsByTagName('head')[0].appendChild(oScript)
 				json.data[json.cbName] = fnName;
 				var arr = []; //创建一个空数据，把用户转入的值放进去
 				for(var name in json.data) {
