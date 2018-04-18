@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    //父类的构造函数
+    function Fun(name,age){
+        this.name = name;
+        this.age = age;
+    };
+    //父类的原型
+    Fun.prototype.sayName = function(){
+        alert(this.name);
+        alert(this.age);
+    };
+    var f = new Fun("liuyuchuang" , 12);
+    f.sayName();
+
+    //子类的构造函数
+    function Fun2(name,age,jop){
+        //继承属性值
+        Fun.call(this,name ,age);
+
+        this.jop = jop;
+    };
+
+    // 方法继承调用
+    // extent(Fun2.prototype , Fun.prototype);
+
+    //简写方法继承
+    for(var attr in Fun.prototype){
+        Fun2.prototype[attr] = Fun.prototype[attr];
+    };
+    Fun2.prototype.syaJop = function(){
+        alert(this.jop);
+    };
+
+    //调用子类
+    var f2 = new Fun2("刘予川",25,"IT大牛");
+    f2.sayName();
+    f2.syaJop();
+
+//  封装方法继承函数
+// function extent( _prototype ,prototype ){
+//     for(var attr in prototype){
+//         _prototype[attr] = prototype[attr];
+//     };
+// };
+
+</script>
+</body>
+</html>
