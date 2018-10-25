@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var arr = ['a','b','c'];
+        var json1={"name":"鹏哥","age":18,"arr1":[1,2,3,4,5],"string":'afasfsafa',"arr2":[1,2,3,4,5],"arr3":[{"name1":"李鹏",'arr3':[1,2,3,4]},{"job":"前端开发"}]};
+        var json2={};
+        function copy(obj1,obj2){
+
+            var obj2 = obj2 || {}; //最初的时候给它一个初始值=它自己或者是一个json
+
+            for(var name in obj1){
+
+                if(typeof obj1[name] === "object"){ //先判断一下obj[name]是不是一个对象
+
+                    obj2[name]= (obj1[name].constructor === Array)?[]:{}; //我们让要复制的对象的name项=数组或者是json
+
+                    copy(obj1[name] , obj2[name]); //然后来无限调用函数自己 递归思想
+
+                }else{
+
+                    obj2[name] = obj1[name];  //如果不是对象，直接等于即可，不会发生引用。
+                }
+            }
+            return obj2; //然后在把复制好的对象给return出去
+        };
+
+        json2=copy(json1,json2);
+        json2.name = '川哥';
+        console.log(json2);
+        console.log(json1);
+    </script>
+</body>
+</html>
