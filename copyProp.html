@@ -23,8 +23,7 @@
 
                     copy(obj1[name] , obj2[name]); //然后来无限调用函数自己 递归思想
 
-                }else{
-
+                }else{   
                     obj2[name] = obj1[name];  //如果不是对象，直接等于即可，不会发生引用。
                 }
             }
